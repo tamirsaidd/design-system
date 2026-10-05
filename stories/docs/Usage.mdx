@@ -1,0 +1,68 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Docs/Usage" />
+
+# Usage
+
+## Run it
+
+It is not on npm. To explore it locally:
+
+```bash
+npm install
+npm run storybook
+```
+
+## Use it in a React app
+
+Import the stylesheet once, then the components.
+
+```tsx
+import './design-system/src/styles/index.css';
+import { Button, Input, ToastProvider } from './design-system/src';
+
+export function SaveForm() {
+  return (
+    <form>
+      <Input label="Email address" type="email" hint="We send your saved list here." />
+      <Button variant="primary" type="submit">
+        Save my list
+      </Button>
+    </form>
+  );
+}
+```
+
+## Light and dark
+
+The theme is a `data-theme` attribute on the root element. Without it, light applies.
+
+```html
+<html data-theme="dark">
+```
+
+Components never branch on theme. They read semantic tokens, and the theme swaps what those tokens point at.
+
+## Chapter themes
+
+A chapter theme re-skins everything inside it. Wrap a screen in `ThemeScope`:
+
+```tsx
+import { ThemeScope } from './design-system/src';
+
+<ThemeScope chapter="education-platform">{/* screens */}</ThemeScope>;
+```
+
+Chapter values live in `src/tokens/chapters/`, next to the base tokens. The token build fails if a chapter names a token that does not exist, or overrides a colour in light but not in dark.
+
+## Class names
+
+Utilities are named by role, never by number: `p-card`, `gap-tight`, `text-fg-muted`, `bg-surface-raised`, `rounded-control`. Tailwind's default palette and spacing numbers are switched off, so `bg-blue-500` and `p-4` do nothing here. The Tokens page lists every name and the token behind it.
+
+## Proposing a component
+
+1. Start with the problem: the screen, the person using it, and what they are trying to do.
+2. Show the two existing components that almost fit, and why each falls short.
+3. Write its state table: default, hover, pressed, focus, disabled, and any loading or error state, with a token in every cell.
+4. Build it with tokens only, plus stories for each state and controls for every prop.
+5. Run `npm run check`. It has to pass contrast, axe in both themes, lint and the build before review.

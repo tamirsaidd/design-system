@@ -1,0 +1,80 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import {
+  ColorRamp,
+  ElevationScale,
+  FontFamilies,
+  RadiusScale,
+  SemanticColors,
+  SpacingScale,
+  StatusColors,
+  TokenTable,
+  TypeScale,
+} from './blocks/TokenBlocks';
+
+<Meta title="Docs/Tokens" />
+
+# Tokens
+
+Every value in the system lives in one file, `src/tokens/tokens.ts`. This page reads that file, so it cannot drift from what ships. Switch the theme in the toolbar and every swatch follows.
+
+Tokens come in three layers. Primitives are the raw palette and scales. Semantic tokens say what a value is for, and they are where light and dark diverge. Component tokens let a chapter change a component's shape without touching its code.
+
+## Colour
+
+### Brand
+
+The accent is step 600. In dark mode the ramps run the other way: step 50 is always the step nearest the canvas, so a semantic token can point at the same step in both themes.
+
+<ColorRamp group="brand" />
+
+### Neutral
+
+A hair warm, so the blue accent reads clean against it. Paper and ink match the portfolio.
+
+<ColorRamp group="neutral" />
+
+### Surfaces, text and borders
+
+<SemanticColors groups={['surface', 'text', 'border']} />
+
+### Accent and focus
+
+<SemanticColors groups={['accent', 'focus']} />
+
+### Status
+
+Calm and factual. Each status pairs its colour with words, so it still reads in greyscale.
+
+<StatusColors />
+
+## Type
+
+<FontFamilies />
+
+<TypeScale />
+
+## Spacing
+
+Space in 8s, adjust in 4s. Components never use numbers in class names; they use the role names below.
+
+<SpacingScale />
+
+## Radius
+
+<RadiusScale />
+
+## Elevation
+
+<ElevationScale />
+
+## Motion, sizes, layers and widths
+
+Durations drop to zero for anyone who asks their system to reduce motion.
+
+<TokenTable groups={['motion', 'size', 'layer', 'container']} />
+
+## Component tokens
+
+The third layer. A chapter can point these somewhere else: the education platform rounds its cards to 20px and its controls to 44px tall.
+
+<TokenTable groups={['component']} />

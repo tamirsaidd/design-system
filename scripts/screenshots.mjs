@@ -6,7 +6,7 @@
  *   node scripts/screenshots.mjs --out <dir> [--only <id-fragment>] [--docs]
  *
  * Writes <dir>/<story-id>__<width>__<theme>.png. Pass --docs to include the
- * docs pages (Tokens, Design principles and the rest) as well as stories.
+ * standalone docs pages (Tokens, Design principles and the rest).
  */
 import { mkdirSync, readFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
@@ -25,8 +25,9 @@ const VIEWPORTS = [
 const THEMES = ['light', 'dark'];
 
 const index = JSON.parse(readFileSync(join(ROOT, 'index.json'), 'utf8'));
+const isDocsPage = (e) => e.type === 'docs' && e.tags?.includes('unattached-mdx');
 const entries = Object.values(index.entries).filter(
-  (e) => (e.type === 'story' || (WITH_DOCS && e.type === 'docs' && !e.tags?.includes('autodocs'))) && e.id.includes(ONLY),
+  (e) => (e.type === 'story' || (WITH_DOCS && isDocsPage(e))) && e.id.includes(ONLY),
 );
 mkdirSync(OUT, { recursive: true });
 

@@ -1,0 +1,43 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { DocList } from './blocks/DocList';
+
+<Meta title="Docs/Design principles" />
+
+# Design principles
+
+A short list, because a long one never gets read. Each line is a decision I would otherwise make again on every screen, and each one is held by something in the code rather than by memory.
+
+<DocList
+  items={[
+    {
+      term: 'Tokens first.',
+      detail: 'If a value is not a token, it is a bug waiting for a second screen.',
+      meta: 'Held by one token file that feeds the CSS, the class names and these docs. CI fails on any hex code outside it.',
+    },
+    {
+      term: 'One loud thing per screen.',
+      detail: 'The accent marks the next step, so it shows up once.',
+      meta: 'Held by Button, which is secondary unless you ask for primary.',
+    },
+    {
+      term: 'Labels stay put.',
+      detail: 'A field should still say what it wants after you start typing.',
+      meta: 'Held by FormField, which renders the label for every control. Placeholders are examples, never labels.',
+    },
+    {
+      term: 'Flat until it floats.',
+      detail: 'Cards rest on an edge, not a shadow.',
+      meta: 'Held by three elevation tokens that only toasts and modals use, and card edges measured in both themes.',
+    },
+    {
+      term: 'Accessible is the floor.',
+      detail: 'Visible focus, 44px taps, and words that never lean on colour alone.',
+      meta: 'Held by a contrast check on every colour pairing and axe on every story, light and dark, in CI.',
+    },
+    {
+      term: 'Same parts, different products.',
+      detail: 'The chapters show the system bending without breaking.',
+      meta: "Held by chapter themes: each rebuilds screens from a product I designed, with these components and only that product's tokens.",
+    },
+  ]}
+/>

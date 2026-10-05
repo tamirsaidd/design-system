@@ -176,20 +176,20 @@ export const radius = {
 
 /** Soft, warm-tinted shadows. Resting cards never use them. */
 export const elevation = {
-  /** Small lifts: a switch thumb, a pressed segment. */
   sm: {
     light: '0 1px 2px rgb(25 25 22 / 0.06)',
     dark: '0 1px 2px rgb(8 8 6 / 0.4)',
+    note: 'Small lifts: the switch thumb.',
   },
-  /** Toasts and popovers. */
   md: {
     light: '0 8px 24px -6px rgb(25 25 22 / 0.12), 0 2px 6px -2px rgb(25 25 22 / 0.06)',
     dark: '0 8px 24px -6px rgb(8 8 6 / 0.5), 0 2px 6px -2px rgb(8 8 6 / 0.32)',
+    note: 'Toasts and anything else that floats briefly.',
   },
-  /** Modals. */
   lg: {
     light: '0 24px 48px -12px rgb(25 25 22 / 0.2), 0 6px 16px -6px rgb(25 25 22 / 0.08)',
     dark: '0 24px 48px -12px rgb(8 8 6 / 0.64), 0 6px 16px -6px rgb(8 8 6 / 0.4)',
+    note: 'Modals.',
   },
 } satisfies Record<string, Themed>;
 

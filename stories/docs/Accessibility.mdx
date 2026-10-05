@@ -1,0 +1,58 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { DocList } from './blocks/DocList';
+
+<Meta title="Docs/Accessibility" />
+
+# Accessibility
+
+The target is WCAG 2.2 AA, checked by machines on every push and by hand on anything a machine cannot see.
+
+## Contrast
+
+<DocList
+  items={[
+    { term: '4.5:1', detail: 'Body text, labels, hints and links, on every surface they sit on.' },
+    { term: '3:1', detail: 'Control edges, focus rings, status icons and the switch thumb against its track.' },
+    { term: '1.4:1', detail: 'Card edges against the canvas. Our own floor, so a flat card still reads as a surface.' },
+  ]}
+/>
+
+All three are checked by `npm run check:contrast`, which resolves every pairing the components use, in light and dark, for the base theme and every chapter theme. Muted text is held to the same 4.5:1 as body text; it is quieter, not optional. A component that puts a colour somewhere new adds its pairing to the check first.
+
+## Focus
+
+One focus style everywhere: a 2px outline in the focus colour, 2px clear of the element, shown only for keyboard focus. Pointer clicks stay quiet. Tabs and scrolling panels draw it inside their edge so it is never clipped.
+
+## Keyboard
+
+<DocList
+  items={[
+    { term: 'Button', detail: 'Enter or Space activates. Loading buttons ignore repeat presses.' },
+    { term: 'Checkbox, Switch', detail: 'Space toggles.' },
+    { term: 'Radio group', detail: 'Tab enters on the selected option; arrow keys move and select.' },
+    { term: 'Select', detail: 'The native picker: arrow keys, type to jump, Enter to choose.' },
+    { term: 'Tabs', detail: 'Arrow keys move along the row and wrap. Home and End jump to the ends. Tab moves into the panel.' },
+    { term: 'Modal', detail: 'Focus starts inside, Tab and Shift+Tab wrap, Esc closes, and focus returns to what opened it.' },
+    { term: 'Toast', detail: 'Dismiss and action buttons are reachable by Tab. Toasts pause while focused.' },
+  ]}
+/>
+
+Tabs, Modal and Toast each have a play test that presses the keys and checks where focus lands.
+
+## Motion
+
+Every duration is a token, and those tokens drop to zero under `prefers-reduced-motion`. Modals and toasts then appear in place, switches snap, and spinners hold still. Nothing depends on an animation finishing to become visible.
+
+## Touch
+
+The smallest tap area is 44 by 44 pixels, whatever a control's drawn size. Small buttons, checkboxes and close icons keep their look and reach 44px through an invisible hit area.
+
+## Meaning never rides on colour alone
+
+Badges and toasts say their status in words, and icons repeat it. Errors are written under the field, not only drawn in red, and they say what to do next.
+
+## How it is tested
+
+- axe runs on every story, light and dark, the same way the Storybook a11y addon does. Zero violations is the bar.
+- The same run fails if a story throws, logs an error, or a play test fails.
+- Both checks run in CI on every push.
