@@ -58,6 +58,24 @@
   }
 }
 
+/* Sideways scrollers (a long tab row on a phone) fade the edge with more
+   content past it. Components set data-scroll-fade as they scroll. */
+[data-scroll-fade='end'] {
+  mask-image: linear-gradient(to right, black calc(100% - var(--ds-space-8)), transparent);
+}
+[data-scroll-fade='start'] {
+  mask-image: linear-gradient(to left, black calc(100% - var(--ds-space-8)), transparent);
+}
+[data-scroll-fade='both'] {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black var(--ds-space-8),
+    black calc(100% - var(--ds-space-8)),
+    transparent
+  );
+}
+
 /* Entrances. Durations are tokens, and tokens drop to zero under reduced
    motion, so these resolve straight to their end state for those users. */
 @keyframes ds-fade-in {

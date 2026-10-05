@@ -80,6 +80,9 @@ async function main() {
   const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
   const errors = [];
   page.on('pageerror', (e) => errors.push(e.message));
+  page.on('console', (m) => {
+    if (m.type() === 'error') errors.push(`${m.text()} (${page.url().split('?')[1] ?? ''})`);
+  });
 
   const failures = [];
   let runs = 0;
@@ -91,6 +94,9 @@ async function main() {
       });
       await page.evaluate(() => document.fonts.ready);
       await page.waitForTimeout(300);
+      if (await page.evaluate(() => document.body.classList.contains('sb-show-errordisplay'))) {
+        errors.push(`${story.title} / ${story.name} [${theme}] rendered Storybook's error screen`);
+      }
       if ((await page.evaluate(() => typeof window.axe)) === 'undefined') await page.addScriptTag({ content: axeSource });
       const result = await page.evaluate(async () => {
         const axe = window.axe;
