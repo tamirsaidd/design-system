@@ -43,6 +43,12 @@ const TYPES = {
 export function serve(dir) {
   const server = createServer((req, res) => {
     const path = normalize(decodeURIComponent(new URL(req.url, 'http://x').pathname)).replace(/^(\.\.[/\\])+/, '');
+    // Browsers ask for /favicon.ico when the preview iframe is opened as a page
+    // on its own. The real Storybook shell sets its own icon, so answer empty.
+    if (path === '/favicon.ico') {
+      res.writeHead(204).end();
+      return;
+    }
     let file = join(dir, path);
     if (existsSync(file) && statSync(file).isDirectory()) file = join(file, 'index.html');
     if (!existsSync(file)) {
