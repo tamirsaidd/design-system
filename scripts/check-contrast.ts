@@ -45,6 +45,9 @@ const pairs: Pair[] = [
   ...['surface-base', 'surface-raised'].map((bg): Pair => ['control-border', bg, UI, 'form control edge']),
   ...floating.map((bg): Pair => ['focus-ring', bg, UI, 'focus outline']),
   ['accent-base', 'surface-raised', UI, 'checked control fill'],
+  // Switch: the thumb is a raised surface on the track, off and on.
+  ['surface-raised', 'control-border', UI, 'switch thumb on the off track'],
+  ['surface-raised', 'accent-base', UI, 'switch thumb on the on track'],
   ['border-default', 'surface-base', EDGE, 'card edge on the canvas'],
 ];
 
