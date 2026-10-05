@@ -225,6 +225,11 @@ export const layer = {
 } as const;
 
 export const container = {
+  /** Toasts and confirmations. */
+  dialogSm: '24rem',
+  /** The default modal width. */
+  dialog: '32rem',
+  /** Long-form reading: holds about 70 characters a line. */
   reading: '48rem',
   content: '72rem',
   page: '90rem',

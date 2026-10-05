@@ -118,6 +118,8 @@
   --spacing-control-md: var(--ds-control-md);
   --spacing-control-lg: var(--ds-control-lg);
   --spacing-target: var(--ds-target-min);
+  --container-dialog-sm: var(--ds-container-dialog-sm);
+  --container-dialog: var(--ds-container-dialog);
   --container-reading: var(--ds-container-reading);
   --container-content: var(--ds-container-content);
   --container-page: var(--ds-container-page);

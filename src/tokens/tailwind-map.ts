@@ -127,6 +127,8 @@ export const tailwindMap = {
     target: 'target-min',
   },
   container: {
+    'dialog-sm': 'container-dialog-sm',
+    dialog: 'container-dialog',
     reading: 'container-reading',
     content: 'container-content',
     page: 'container-page',

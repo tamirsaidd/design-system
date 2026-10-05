@@ -55,6 +55,8 @@
   --ds-layer-sticky: 10;
   --ds-layer-modal: 50;
   --ds-layer-toast: 60;
+  --ds-container-dialog-sm: 24rem;
+  --ds-container-dialog: 32rem;
   --ds-container-reading: 48rem;
   --ds-container-content: 72rem;
   --ds-container-page: 90rem;

@@ -65,7 +65,7 @@ export function flattenTokens(): FlatToken[] {
   for (const [k, v] of Object.entries(size.control)) out.push(plain(`control-${k}`, 'size', v));
   out.push(plain('target-min', 'size', size.target));
   for (const [k, v] of Object.entries(layer)) out.push(plain(`layer-${k}`, 'layer', v));
-  for (const [k, v] of Object.entries(container)) out.push(plain(`container-${k}`, 'container', v));
+  for (const [k, v] of Object.entries(container)) out.push(plain(`container-${kebab(k)}`, 'container', v));
 
   for (const [part, set] of Object.entries(component)) {
     for (const [k, v] of Object.entries(set)) out.push(plain(`${part}-${kebab(k)}`, 'component', v));
