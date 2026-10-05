@@ -1,0 +1,95 @@
+/* Reset and element defaults. Every value here is a token. */
+@layer base {
+  html {
+    background-color: var(--ds-surface-base);
+    color: var(--ds-text-primary);
+    font-family: var(--ds-font-sans);
+    line-height: var(--ds-line-height-normal);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    min-block-size: 100dvh;
+    background-color: inherit;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--ds-font-display);
+    font-weight: var(--ds-heading-weight);
+    line-height: var(--ds-line-height-tight);
+    letter-spacing: var(--ds-letter-spacing-tight);
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* One focus style everywhere, keyboard only. Pointer clicks stay quiet. */
+  :focus-visible {
+    outline: 2px solid var(--ds-focus-ring);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background-color: var(--ds-accent-subtle);
+    color: var(--ds-text-primary);
+  }
+}
+
+/* A 44px tap area for any control drawn smaller, without changing its look. */
+@utility target-area {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline-start: 50%;
+    inline-size: max(100%, var(--ds-target-min));
+    block-size: max(100%, var(--ds-target-min));
+    translate: -50% -50%;
+  }
+}
+
+/* Entrances. Durations are tokens, and tokens drop to zero under reduced
+   motion, so these resolve straight to their end state for those users. */
+@keyframes ds-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes ds-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+}
+
+@keyframes ds-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+@theme inline {
+  --animate-fade-in: ds-fade-in var(--ds-duration-base) var(--ds-ease-out) both;
+  --animate-rise-in: ds-rise-in var(--ds-duration-base) var(--ds-ease-out) both;
+  --animate-slide-in: ds-slide-in var(--ds-duration-slow) var(--ds-ease-out) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --ds-duration-fast: 0ms;
+    --ds-duration-base: 0ms;
+    --ds-duration-slow: 0ms;
+  }
+}
