@@ -56,7 +56,7 @@ const preview: Preview = {
           ['Design principles', 'Tokens', 'Accessibility', 'Usage'],
           'Components',
           'Chapters',
-          ['Chapter 1 · Education platform', ['Intro', 'Program browse', 'Eligibility result', 'Scholarship list', 'Before and after']],
+          ['Education platform', ['Intro', 'Program browse', 'Eligibility result', 'Scholarship list', 'Before and after']],
         ],
       },
     },

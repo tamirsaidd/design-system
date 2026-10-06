@@ -1,0 +1,29 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { ChapterDerivedNotes, ChapterTokenDiff } from '../../../stories/docs/blocks/ChapterTokenDiff';
+
+<Meta title="Chapters/Education platform/Intro" />
+
+# Chapter 1 · Education platform
+
+An education platform that helps students figure out what to study.
+
+The three screens in this chapter use the same components as everything else in the system. Only the tokens change: one typeface for headings and body, softer corners, 44px controls throughout, the platform's own blue, and purple for Explore. Switch the theme in the toolbar and the chapter follows, using the platform's own dark values.
+
+Every school, program, grade and award on these screens is sample data.
+
+## The screens
+
+- **Program browse.** Saved programs as cards, filtered by verdict, with search.
+- **Eligibility result.** One program's verdict first, then the published requirements behind it.
+- **Scholarship list.** Awards in one list, soonest deadline first, with amounts that always name their currency.
+- **Before and after.** One card, before and after the system.
+
+## What the chapter theme changes
+
+<ChapterTokenDiff chapter="education-platform" />
+
+## Where the chapter departs from the platform
+
+Four values are not the platform's own tokens. Two hold the accessibility floor, and both are worth taking back to the product.
+
+<ChapterDerivedNotes chapter="education-platform" />
