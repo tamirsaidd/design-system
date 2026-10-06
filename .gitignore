@@ -12,3 +12,4 @@ coverage/
 .claude/design-gate/
 .claude/verify/
 .claude/settings.local.json
+.claude/gate-debt.json
