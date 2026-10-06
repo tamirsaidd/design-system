@@ -3,6 +3,7 @@ import '@fontsource-variable/inter';
 import '@fontsource-variable/jetbrains-mono';
 import '@fontsource-variable/outfit';
 import '../src/styles/index.css';
+import './docs.css';
 
 import type { Decorator, Preview } from '@storybook/react-vite';
 import { GLOBALS_UPDATED, SET_GLOBALS } from 'storybook/internal/core-events';

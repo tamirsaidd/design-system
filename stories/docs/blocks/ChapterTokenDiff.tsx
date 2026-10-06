@@ -31,12 +31,14 @@ export function ChapterTokenDiff({ chapter }: { chapter: string }) {
             <li key={name} className="grid gap-x-base gap-y-nudge px-card py-tight sm:grid-cols-[minmax(0,14rem)_1fr_1fr]">
               <code className="font-mono text-xs text-fg">--ds-{name}</code>
               <span className="flex min-w-0 items-center gap-tight">
+                <span className="w-14 shrink-0 text-xs text-fg-muted sm:hidden">Base</span>
                 <Swatch value={base} />
-                <span className="font-mono text-xs break-all text-fg-muted">{base}</span>
+                <span className="font-mono text-xs break-words text-fg-muted">{base}</span>
               </span>
               <span className="flex min-w-0 items-center gap-tight">
+                <span className="w-14 shrink-0 text-xs text-fg-muted sm:hidden">Chapter</span>
                 <Swatch value={own} />
-                <span className="font-mono text-xs break-all text-fg-secondary">{own}</span>
+                <span className="font-mono text-xs break-words text-fg-secondary">{own}</span>
               </span>
             </li>
           );

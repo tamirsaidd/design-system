@@ -1,0 +1,10 @@
+/* Tailwind's reset strips list markers everywhere, including the markdown
+   prose on docs pages. Put them back for prose only; token blocks opt out
+   with .sb-unstyled and keep their own list styles. */
+.sbdocs-content ol:not(.sb-unstyled *) {
+  list-style: decimal;
+}
+
+.sbdocs-content ul:not(.sb-unstyled *) {
+  list-style: disc;
+}
