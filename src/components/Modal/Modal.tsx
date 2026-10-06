@@ -130,7 +130,7 @@ export function Modal({
       }}
       onKeyDown={keepFocusInside}
       className={cn(
-        'fixed inset-0 m-0 h-dvh max-h-none w-full max-w-none items-center justify-center bg-transparent p-gutter text-fg',
+        'fixed inset-0 m-none h-dvh max-h-none w-full max-w-none items-center justify-center bg-transparent p-gutter text-fg',
         'open:flex sm:p-loose',
         'backdrop:bg-scrim backdrop:animate-fade-in',
       )}
@@ -144,11 +144,11 @@ export function Modal({
       >
         <div className="flex items-start justify-between gap-base px-loose pt-loose">
           <div className="flex min-w-0 flex-col gap-nudge">
-            <h2 id={titleId} className="m-0 text-xl">
+            <h2 id={titleId} className="m-none text-xl">
               {title}
             </h2>
             {description ? (
-              <p id={descriptionId} className="m-0 text-sm leading-normal text-fg-secondary">
+              <p id={descriptionId} className="m-none text-sm leading-normal text-fg-secondary">
                 {description}
               </p>
             ) : null}

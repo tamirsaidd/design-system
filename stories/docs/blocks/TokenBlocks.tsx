@@ -64,7 +64,7 @@ function ThemedValue({ token }: { token: FlatToken }) {
 export function ColorRamp({ group }: { group: 'brand' | 'neutral' }) {
   return (
     <Frame>
-      <ul className="m-0 grid list-none grid-cols-2 gap-snug p-0 sm:grid-cols-4 lg:grid-cols-6">
+      <ul className="m-none grid list-none grid-cols-2 gap-snug p-none sm:grid-cols-4 lg:grid-cols-6">
         {byGroup(group).map((t) => (
           <li key={t.name} className="flex flex-col gap-tight">
             <span
@@ -86,7 +86,7 @@ export function SemanticColors({ groups }: { groups: string[] }) {
   const rows = groups.flatMap((g) => byGroup(g));
   return (
     <Frame>
-      <ul className="m-0 flex list-none flex-col divide-y divide-line-subtle rounded-card border border-line bg-surface-raised p-0">
+      <ul className="m-none flex list-none flex-col divide-y divide-line-subtle rounded-card border border-line bg-surface-raised p-none">
         {rows.map((t) => (
           <li key={t.name} className="grid grid-cols-[auto_1fr] items-start gap-x-base gap-y-nudge px-card py-snug sm:grid-cols-[auto_1fr_auto]">
             <span
@@ -114,7 +114,7 @@ export function StatusColors() {
   const statuses = ['success', 'warning', 'danger', 'info'] as const;
   return (
     <Frame>
-      <ul className="m-0 grid list-none gap-snug p-0 sm:grid-cols-2">
+      <ul className="m-none grid list-none gap-snug p-none sm:grid-cols-2">
         {statuses.map((s) => (
           <li
             key={s}
@@ -202,7 +202,7 @@ export function TypeScale() {
 export function SpacingScale() {
   return (
     <Frame className="flex flex-col gap-loose">
-      <ul className="m-0 flex list-none flex-col gap-tight p-0">
+      <ul className="m-none flex list-none flex-col gap-tight p-none">
         {byGroup('spacing').map((t) => (
           <li key={t.name} className="grid grid-cols-[6rem_1fr] items-center gap-base">
             <Code>
@@ -213,8 +213,8 @@ export function SpacingScale() {
         ))}
       </ul>
       <div className="flex flex-col gap-tight">
-        <p className="m-0 text-sm font-semibold">Role names in class strings</p>
-        <ul className="m-0 grid list-none gap-x-loose gap-y-nudge p-0 sm:grid-cols-2">
+        <p className="m-none text-sm font-semibold">Role names in class strings</p>
+        <ul className="m-none grid list-none gap-x-loose gap-y-nudge p-none sm:grid-cols-2">
           {Object.entries(tailwindMap.spacing).map(([role, token]) => (
             <li key={role} className="flex justify-between gap-base border-b border-line-subtle py-nudge">
               <Code>p-{role}</Code>
@@ -233,7 +233,7 @@ export function SpacingScale() {
 export function RadiusScale() {
   return (
     <Frame>
-      <ul className="m-0 grid list-none grid-cols-3 gap-base p-0 sm:grid-cols-6">
+      <ul className="m-none grid list-none grid-cols-3 gap-base p-none sm:grid-cols-6">
         {byGroup('radius').map((t) => (
           <li key={t.name} className="flex flex-col gap-tight">
             <span
@@ -254,7 +254,7 @@ export function RadiusScale() {
 export function ElevationScale() {
   return (
     <Frame>
-      <ul className="m-0 grid list-none gap-loose p-0 sm:grid-cols-3">
+      <ul className="m-none grid list-none gap-loose p-none sm:grid-cols-3">
         {byGroup('elevation').map((t) => (
           <li
             key={t.name}
@@ -275,7 +275,7 @@ export function TokenTable({ groups }: { groups: string[] }) {
   const rows = groups.flatMap((g) => byGroup(g));
   return (
     <Frame>
-      <ul className="m-0 flex list-none flex-col divide-y divide-line-subtle rounded-card border border-line bg-surface-raised p-0">
+      <ul className="m-none flex list-none flex-col divide-y divide-line-subtle rounded-card border border-line bg-surface-raised p-none">
         {rows.map((t) => (
           <li key={t.name} className="flex flex-col gap-nudge px-card py-snug sm:flex-row sm:items-baseline sm:justify-between">
             <Code>{cssVar(t.name)}</Code>

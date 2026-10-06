@@ -52,8 +52,8 @@ export function Toast({ variant = 'info', title, description, action, onDismiss,
         <Icon className={cn('size-5', iconColour[variant])} />
       </span>
       <div className="flex min-w-0 flex-1 flex-col gap-nudge">
-        <p className="m-0 text-sm font-semibold leading-normal">{title}</p>
-        {description ? <p className="m-0 text-sm leading-normal text-fg-secondary">{description}</p> : null}
+        <p className="m-none text-sm font-semibold leading-normal">{title}</p>
+        {description ? <p className="m-none text-sm leading-normal text-fg-secondary">{description}</p> : null}
         {action ? (
           <div className="-ml-inset-sm">
             <Button size="sm" variant="tertiary" onClick={action.onClick}>
@@ -180,7 +180,7 @@ export function ToastProvider({ children, max = 3, label = 'Notifications' }: To
           'sm:left-auto sm:right-gutter-wide sm:bottom-gutter-wide sm:w-full sm:max-w-dialog-sm',
         )}
       >
-        <ol className="m-0 flex list-none flex-col gap-tight p-0">
+        <ol className="m-none flex list-none flex-col gap-tight p-none">
           {toasts.map((record) => (
             <ToastItem key={record.id} record={record} onDismiss={dismiss} />
           ))}

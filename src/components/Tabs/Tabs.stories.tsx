@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, fn, userEvent, within } from 'storybook/test';
 import { Tabs, type TabItem } from './Tabs';
 
-const panel = (text: string) => <p className="m-0 max-w-reading text-md leading-normal text-fg-secondary">{text}</p>;
+const panel = (text: string) => <p className="m-none max-w-reading text-md leading-normal text-fg-secondary">{text}</p>;
 
 const items: TabItem[] = [
   { id: 'overview', label: 'Overview', content: panel('What the program covers, how long it takes and where it leads.') },

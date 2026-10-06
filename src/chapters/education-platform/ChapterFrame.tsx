@@ -21,7 +21,7 @@ export function ChapterFrame({ current, children }: ChapterFrameProps) {
       <header className="sticky top-0 z-(--ds-layer-sticky) border-b border-line-subtle bg-surface-raised">
         <div className="mx-auto flex h-16 max-w-content items-center justify-between gap-base px-gutter sm:px-gutter-wide">
           <nav aria-label="Main">
-            <ul className="m-0 flex list-none items-center gap-tight p-0">
+            <ul className="m-none flex list-none items-center gap-tight p-none">
               {nav.map((item) => (
                 <li key={item.id}>
                   <a

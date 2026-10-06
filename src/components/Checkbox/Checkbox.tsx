@@ -53,7 +53,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(function Che
           aria-describedby={describedBy}
           aria-invalid={error ? true : undefined}
           className={cn(
-            'peer m-0 size-5 shrink-0 cursor-pointer appearance-none rounded-checkbox border border-line-control bg-surface-raised',
+            'peer m-none size-5 shrink-0 cursor-pointer appearance-none rounded-checkbox border border-line-control bg-surface-raised',
             'transition-[background-color,border-color] duration-(--ds-duration-fast) ease-out hover:border-fg-muted',
             'checked:border-accent checked:bg-accent checked:hover:border-accent-hover checked:hover:bg-accent-hover',
             'indeterminate:border-accent indeterminate:bg-accent',

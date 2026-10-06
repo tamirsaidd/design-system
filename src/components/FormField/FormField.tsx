@@ -101,9 +101,9 @@ export function FormField({
       <fieldset
         aria-describedby={describedBy}
         disabled={disabled}
-        className={cn('m-0 flex min-w-0 flex-col gap-tight border-0 p-0', className)}
+        className={cn('m-none flex min-w-0 flex-col gap-tight border-0 p-none', className)}
       >
-        <legend className={cn(labelClass, 'mb-tight p-0')}>{labelContent}</legend>
+        <legend className={cn(labelClass, 'mb-tight p-none')}>{labelContent}</legend>
         {control}
         {messages}
       </fieldset>

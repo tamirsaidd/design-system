@@ -42,7 +42,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(function Switch(
               onCheckedChange?.(event.target.checked);
             }}
             className={cn(
-              'peer absolute inset-0 m-0 size-full cursor-pointer appearance-none rounded-full bg-line-control',
+              'peer absolute inset-0 m-none size-full cursor-pointer appearance-none rounded-full bg-line-control',
               'transition-[background-color] duration-(--ds-duration-fast) ease-out',
               'checked:bg-accent hover:checked:bg-accent-hover',
               'disabled:cursor-not-allowed disabled:bg-line disabled:checked:bg-fg-disabled',

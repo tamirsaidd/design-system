@@ -18,7 +18,7 @@ export function ChapterTokenDiff({ chapter }: { chapter: string }) {
   const names = [...Object.keys(theme.shared), ...Object.keys(theme[mode])];
   return (
     <div className="sb-unstyled my-loose font-sans text-fg">
-      <ul className="m-0 flex list-none flex-col divide-y divide-line-subtle rounded-card border border-line bg-surface-raised p-0">
+      <ul className="m-none flex list-none flex-col divide-y divide-line-subtle rounded-card border border-line bg-surface-raised p-none">
         <li className="hidden grid-cols-[minmax(0,14rem)_1fr_1fr] gap-x-base px-card py-tight text-xs font-semibold text-fg-muted sm:grid">
           <span>Token</span>
           <span>Base theme</span>
@@ -52,11 +52,11 @@ export function ChapterDerivedNotes({ chapter }: { chapter: string }) {
   if (!theme) return null;
   return (
     <div className="sb-unstyled my-loose font-sans">
-      <dl className="m-0 divide-y divide-line-subtle rounded-card border border-line bg-surface-raised">
+      <dl className="m-none divide-y divide-line-subtle rounded-card border border-line bg-surface-raised">
         {Object.entries(theme.derived).map(([token, why]) => (
           <div key={token} className="grid gap-nudge px-card py-snug sm:grid-cols-[minmax(0,13rem)_1fr] sm:gap-x-loose">
             <dt className="font-mono text-sm text-fg">{token}</dt>
-            <dd className="m-0 text-md leading-normal text-fg-secondary">{why}</dd>
+            <dd className="m-none text-md leading-normal text-fg-secondary">{why}</dd>
           </div>
         ))}
       </dl>

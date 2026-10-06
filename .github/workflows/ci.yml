@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          # Full history, so the public-safety check reads every commit message.
+          fetch-depth: 0
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Lint
+        run: npm run lint
+      - name: Tokens are current
+        run: npm run check:tokens
+      - name: Contrast, light and dark
+        run: npm run check:contrast
+      - name: Public safety (forbidden words, hex outside tokens)
+        run: npm run check:banned
+      - name: Build Storybook
+        run: npm run build-storybook
+      - name: Accessibility (axe on every story, light and dark)
+        run: npm run check:a11y

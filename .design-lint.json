@@ -1,0 +1,7 @@
+{
+  "include": ["src", "stories", ".storybook"],
+  "tokens": {
+    "sources": ["src/tokens/tokens.ts", "src/tokens/tokens.css", "src/tokens/tailwind.css"],
+    "twMergeFile": "src/tokens/tailwind-map.ts"
+  }
+}

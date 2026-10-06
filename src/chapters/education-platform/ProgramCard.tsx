@@ -35,18 +35,18 @@ export function ProgramCard({ program }: { program: Program }) {
         <VerdictBadge program={program} />
       </div>
       <div className="flex flex-col gap-nudge">
-        <h2 className="m-0 text-lg">{program.name}</h2>
-        <p className="m-0 text-sm text-fg-secondary">{program.institution}</p>
+        <h2 className="m-none text-lg">{program.name}</h2>
+        <p className="m-none text-sm text-fg-secondary">{program.institution}</p>
       </div>
-      <p className="m-0 text-md leading-normal">{verdictSummary(program)}</p>
-      <dl className="m-0 mt-auto grid grid-cols-2 gap-tight border-t border-line-subtle pt-snug">
+      <p className="m-none text-md leading-normal">{verdictSummary(program)}</p>
+      <dl className="m-none mt-auto grid grid-cols-2 gap-tight border-t border-line-subtle pt-snug">
         <div className="flex flex-col">
           <dt className="text-xs text-fg-muted">Length</dt>
-          <dd className="m-0 text-sm font-semibold">{program.years} years</dd>
+          <dd className="m-none text-sm font-semibold">{program.years} years</dd>
         </div>
         <div className="flex flex-col">
           <dt className="text-xs text-fg-muted">Apply by</dt>
-          <dd className="m-0 text-sm font-semibold tabular-nums">{formatDate(program.deadline)}</dd>
+          <dd className="m-none text-sm font-semibold tabular-nums">{formatDate(program.deadline)}</dd>
         </div>
       </dl>
       <CardLink href={links.result(program.id)} target="_top" className="inline-flex items-center gap-nudge self-start text-sm">

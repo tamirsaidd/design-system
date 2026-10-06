@@ -33,7 +33,7 @@ const meta = {
     <Card {...args} className="max-w-dialog">
       <CardHeader title={heading} description={summary} />
       <CardBody>
-        <p className="m-0">{body}</p>
+        <p className="m-none">{body}</p>
       </CardBody>
       <CardFooter>
         <Button>Review deadlines</Button>
@@ -57,7 +57,7 @@ export const WithStatus: Story = {
         action={<Badge variant="warning">2 left</Badge>}
       />
       <CardBody>
-        <p className="m-0">{body}</p>
+        <p className="m-none">{body}</p>
       </CardBody>
       <CardFooter divided>
         <Button variant="primary">Finish checklist</Button>
@@ -75,7 +75,7 @@ export const Interactive: Story = {
     <Card {...args} className="max-w-dialog-sm">
       <CardHeader title={heading} description={summary} />
       <CardBody>
-        <p className="m-0 text-fg-secondary">{body}</p>
+        <p className="m-none text-fg-secondary">{body}</p>
       </CardBody>
       <CardLink href="#saved-programs">Open saved programs</CardLink>
     </Card>
@@ -90,7 +90,7 @@ export const PaddingOptions: Story = {
         <CardHeader title="Compact" description="16px padding in the base theme." />
       </Card>
       <Card {...args} padding="flush">
-        <ul className="m-0 list-none divide-y divide-line-subtle p-0">
+        <ul className="m-none list-none divide-y divide-line-subtle p-none">
           {['Grade 12 English', 'Grade 12 Calculus', 'Grade 12 Chemistry'].map((course) => (
             <li key={course} className="px-card py-snug">
               {course}

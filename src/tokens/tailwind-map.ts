@@ -107,6 +107,7 @@ export const tailwindMap = {
    * inside components.
    */
   spacing: {
+    none: 'space-0',
     nudge: 'space-1',
     tight: 'space-2',
     snug: 'space-3',

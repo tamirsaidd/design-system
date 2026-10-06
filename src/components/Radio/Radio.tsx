@@ -27,7 +27,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
           disabled={disabled}
           aria-describedby={hintId}
           className={cn(
-            'peer m-0 size-5 shrink-0 cursor-pointer appearance-none rounded-full border border-line-control bg-surface-raised',
+            'peer m-none size-5 shrink-0 cursor-pointer appearance-none rounded-full border border-line-control bg-surface-raised',
             'transition-[background-color,border-color] duration-(--ds-duration-fast) ease-out hover:border-fg-muted',
             'checked:border-accent checked:bg-accent checked:hover:bg-accent-hover',
             'aria-invalid:border-danger',

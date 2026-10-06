@@ -52,8 +52,8 @@ export function EligibilityResult({ programId = 'environmental-engineering' }: E
       </a>
 
       <div className="flex max-w-reading flex-col gap-tight">
-        <h1 className="m-0 text-2xl sm:text-3xl">{program.name}</h1>
-        <p className="m-0 text-md text-fg-secondary">
+        <h1 className="m-none text-2xl sm:text-3xl">{program.name}</h1>
+        <p className="m-none text-md text-fg-secondary">
           {program.institution} · {program.years} years ·{' '}
           <span className="whitespace-nowrap">Apply by {formatDate(program.deadline)}</span>
         </p>
@@ -62,10 +62,10 @@ export function EligibilityResult({ programId = 'environmental-engineering' }: E
       <Card as="section" aria-labelledby={verdictId} className="max-w-reading">
         <div className="flex flex-col items-start gap-snug">
           <VerdictBadge program={program} />
-          <h2 id={verdictId} className="m-0 text-xl">
+          <h2 id={verdictId} className="m-none text-xl">
             {headline}
           </h2>
-          <p className="m-0 text-md leading-normal text-fg-secondary">{nextStep}</p>
+          <p className="m-none text-md leading-normal text-fg-secondary">{nextStep}</p>
         </div>
         <CardFooter divided>
           <Button variant="primary">Save program</Button>
@@ -74,11 +74,11 @@ export function EligibilityResult({ programId = 'environmental-engineering' }: E
       </Card>
 
       <section aria-labelledby={evidenceId} className="flex max-w-reading flex-col gap-snug">
-        <h2 id={evidenceId} className="m-0 text-lg">
+        <h2 id={evidenceId} className="m-none text-lg">
           Published requirements
         </h2>
         <Card padding="flush">
-          <ul className="m-0 list-none divide-y divide-line-subtle p-0">
+          <ul className="m-none list-none divide-y divide-line-subtle p-none">
             {program.requirements.map((r) => (
               <li key={r.course} className="grid grid-cols-[1fr_auto] items-start gap-x-base gap-y-nudge px-card py-snug">
                 <span className="text-md font-semibold">{r.course}</span>
@@ -101,7 +101,7 @@ export function EligibilityResult({ programId = 'environmental-engineering' }: E
             ))}
           </ul>
         </Card>
-        <p className="m-0 text-sm leading-normal text-fg-muted">
+        <p className="m-none text-sm leading-normal text-fg-muted">
           Requirements come from each program&rsquo;s published admission page. Every school, program and grade on this
           screen is sample data.
         </p>

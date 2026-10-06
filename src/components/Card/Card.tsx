@@ -19,7 +19,7 @@ export interface CardProps extends HTMLAttributes<HTMLElement> {
 const paddings: Record<CardPadding, string> = {
   standard: 'p-card',
   compact: 'p-base',
-  flush: 'p-0',
+  flush: 'p-none',
 };
 
 /**
@@ -64,8 +64,8 @@ export function CardHeader({ title, description, action, titleAs = 'h3', classNa
   return (
     <div className={cn('flex items-start justify-between gap-snug', className)} {...rest}>
       <div className="flex min-w-0 flex-col gap-nudge">
-        <Title className="m-0 text-lg">{title}</Title>
-        {description ? <p className="m-0 text-sm leading-normal text-fg-secondary">{description}</p> : null}
+        <Title className="m-none text-lg">{title}</Title>
+        {description ? <p className="m-none text-sm leading-normal text-fg-secondary">{description}</p> : null}
       </div>
       {action ? <div className="flex shrink-0 items-center">{action}</div> : null}
     </div>

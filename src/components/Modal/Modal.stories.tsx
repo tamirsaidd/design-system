@@ -34,7 +34,7 @@ function ModalDemo({ body, onClose, open: startOpen, ...args }: DemoArgs) {
           </>
         }
       >
-        <p className="m-0">{body}</p>
+        <p className="m-none">{body}</p>
       </Modal>
     </>
   );

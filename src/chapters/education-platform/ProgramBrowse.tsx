@@ -27,15 +27,15 @@ export function ProgramBrowse({ initialQuery = '', initialFilter = 'all' }: Prog
 
   const grid = (list: Program[]) =>
     list.length ? (
-      <ul className="m-0 grid list-none gap-base p-0 sm:grid-cols-2 lg:grid-cols-3">
+      <ul className="m-none grid list-none gap-base p-none sm:grid-cols-2 lg:grid-cols-3">
         {list.map((program) => (
           <ProgramCard key={program.id} program={program} />
         ))}
       </ul>
     ) : (
       <div className="flex flex-col items-start gap-snug rounded-card border border-dashed border-line-strong p-card">
-        <p className="m-0 text-md font-semibold">No programs match &ldquo;{query}&rdquo;.</p>
-        <p className="m-0 text-md text-fg-secondary">Try a broader word, such as a subject instead of a school.</p>
+        <p className="m-none text-md font-semibold">No programs match &ldquo;{query}&rdquo;.</p>
+        <p className="m-none text-md text-fg-secondary">Try a broader word, such as a subject instead of a school.</p>
         <Button size="sm" onClick={() => setQuery('')}>
           Clear search
         </Button>
@@ -45,8 +45,8 @@ export function ProgramBrowse({ initialQuery = '', initialFilter = 'all' }: Prog
   return (
     <ChapterFrame current="programs">
       <div className="flex max-w-reading flex-col gap-tight">
-        <h1 className="m-0 text-2xl sm:text-3xl">Programs to compare</h1>
-        <p className="m-0 text-md leading-normal text-fg-secondary">
+        <h1 className="m-none text-2xl sm:text-3xl">Programs to compare</h1>
+        <p className="m-none text-md leading-normal text-fg-secondary">
           Each one is checked against the courses and grades in your profile. A guide for planning, not an admission
           decision.
         </p>
