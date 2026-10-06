@@ -8,3 +8,32 @@
 .sbdocs-content ul:not(.sb-unstyled *) {
   list-style: disc;
 }
+
+/* Docs prose takes the system's body type: 16px on a 1.5 line, held to the
+   reading measure. Storybook's default is 14px across a 1000px column, about
+   140 characters a line. Only markdown prose that sits directly in the docs
+   column, or in a story's description, is touched; args tables, token blocks
+   and code keep their own sizes. */
+.sbdocs.sbdocs-content > :is(p, ul, ol),
+.sbdocs.sbdocs-content > .sb-anchor > p {
+  max-width: var(--ds-container-reading);
+  font-size: var(--ds-font-size-md);
+  line-height: var(--ds-line-height-normal);
+}
+
+.sbdocs.sbdocs-content > :is(ul, ol) > li {
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/* At phone width the props table on each component page, and any markdown
+   table such as a state table, is wider than the screen, which pushed the
+   whole page sideways. Below the 640px breakpoint each scrolls inside its
+   own box instead, like the code blocks do. */
+@media (width < 40rem) {
+  .sbdocs-content :is(table.docblock-argstable, table:not([class])) {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}
