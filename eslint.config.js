@@ -24,7 +24,7 @@ export default defineConfig([
   },
   {
     // These drive a browser: code inside page.evaluate runs in the page.
-    files: ['scripts/a11y-check.mjs', 'scripts/screenshots.mjs'],
+    files: ['scripts/a11y-check.mjs', 'scripts/screenshots.mjs', 'scripts/brand-assets.mjs'],
     languageOptions: { globals: { ...globals.node, ...globals.browser } },
   },
   storybook.configs['flat/recommended'],

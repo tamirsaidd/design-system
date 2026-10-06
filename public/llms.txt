@@ -1,0 +1,15 @@
+# Design system
+
+> A token-first React component library in Storybook, built as a portfolio case study by Tamir Said-Ahmed, Product Design Lead. The same 14 components are re-themed by tokens alone to carry different products.
+
+## Where the substance is
+
+- [Design principles](https://tamirsaidd.github.io/design-system/?path=/docs/docs-design-principles--docs): six rules and how each is enforced in code
+- [Tokens](https://tamirsaidd.github.io/design-system/?path=/docs/docs-tokens--docs): every colour, type, spacing, radius, elevation and motion token, light and dark
+- [Accessibility](https://tamirsaidd.github.io/design-system/?path=/docs/docs-accessibility--docs): contrast targets, focus, keyboard map, reduced motion, and how each is tested
+- [Usage](https://tamirsaidd.github.io/design-system/?path=/docs/docs-usage--docs): running it, theming, chapter themes, proposing a component
+- [Chapter 1, an education platform](https://tamirsaidd.github.io/design-system/?path=/docs/chapters-education-platform-intro--docs): three screens and a before/after, sample data only
+
+## Source
+
+- https://github.com/tamirsaidd/design-system
