@@ -76,37 +76,56 @@ async function main() {
   const server = await serve(ROOT);
   const base = `http://127.0.0.1:${server.address().port}`;
   const axeSource = readFileSync(require.resolve('axe-core/axe.min.js'), 'utf8');
-  const browser = await launch();
-  const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+  let browser = await launch();
   const errors = [];
-  page.on('pageerror', (e) => errors.push(e.message));
-  page.on('console', (m) => {
-    if (m.type() === 'error') errors.push(`${m.text()} (${page.url().split('?')[1] ?? ''})`);
-  });
+  const openPage = async () => {
+    const p = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+    p.on('pageerror', (e) => errors.push(e.message));
+    p.on('console', (m) => {
+      if (m.type() === 'error') errors.push(`${m.text()} (${p.url().split('?')[1] ?? ''})`);
+    });
+    return p;
+  };
+  let page = await openPage();
+
+  const audit = async (story, theme) => {
+    await page.goto(`${base}/iframe.html?id=${story.id}&viewMode=story&globals=theme:${theme}`);
+    await page.waitForFunction(() => document.querySelector('#storybook-root')?.childElementCount > 0, null, {
+      timeout: 15000,
+    });
+    await page.evaluate(() => document.fonts.ready);
+    await page.waitForTimeout(300);
+    if (await page.evaluate(() => document.body.classList.contains('sb-show-errordisplay'))) {
+      errors.push(`${story.title} / ${story.name} [${theme}] rendered Storybook's error screen`);
+    }
+    if ((await page.evaluate(() => typeof window.axe)) === 'undefined') await page.addScriptTag({ content: axeSource });
+    return page.evaluate(async () => {
+      const axe = window.axe;
+      axe.reset();
+      axe.configure({ rules: [{ id: 'region', enabled: false }] });
+      return axe.run(
+        { include: [document.body], exclude: ['.sb-wrapper', '#storybook-docs', '#storybook-highlights-root'] },
+        { resultTypes: ['violations'] },
+      );
+    });
+  };
 
   const failures = [];
   let runs = 0;
   for (const story of stories) {
     for (const theme of THEMES) {
-      await page.goto(`${base}/iframe.html?id=${story.id}&viewMode=story&globals=theme:${theme}`);
-      await page.waitForFunction(() => document.querySelector('#storybook-root')?.childElementCount > 0, null, {
-        timeout: 15000,
-      });
-      await page.evaluate(() => document.fonts.ready);
-      await page.waitForTimeout(300);
-      if (await page.evaluate(() => document.body.classList.contains('sb-show-errordisplay'))) {
-        errors.push(`${story.title} / ${story.name} [${theme}] rendered Storybook's error screen`);
+      if (process.env.A11Y_VERBOSE) console.log(`checking ${story.id} [${theme}]`);
+      let result;
+      try {
+        result = await audit(story, theme);
+      } catch (error) {
+        // A dropped page or browser is retried once on a fresh one. A second
+        // failure is reported, never skipped.
+        console.error(`retrying ${story.id} [${theme}] after: ${String(error.message).split('\n')[0]}`);
+        if (!browser.isConnected()) browser = await launch();
+        page = await openPage();
+        result = await audit(story, theme);
       }
-      if ((await page.evaluate(() => typeof window.axe)) === 'undefined') await page.addScriptTag({ content: axeSource });
-      const result = await page.evaluate(async () => {
-        const axe = window.axe;
-        axe.reset();
-        axe.configure({ rules: [{ id: 'region', enabled: false }] });
-        return axe.run(
-          { include: [document.body], exclude: ['.sb-wrapper', '#storybook-docs', '#storybook-highlights-root'] },
-          { resultTypes: ['violations'] },
-        );
-      });
       runs += 1;
       for (const v of result.violations) {
         failures.push(
