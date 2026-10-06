@@ -77,7 +77,7 @@ export function ScholarshipList({ initialQualifyingOnly = false, initialSort = '
           Scholarships to apply for
         </h1>
         <p className="m-none text-md leading-normal text-fg-secondary">
-          Amounts are in Canadian dollars. Every award here is sample data.
+          Every award here is sample data.
         </p>
       </div>
       <div className="flex max-w-reading flex-col gap-base sm:flex-row sm:items-end sm:gap-loose">

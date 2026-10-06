@@ -4,11 +4,13 @@ import { ProgramCard } from './ProgramCard';
 
 /**
  * The "before": a reconstruction of a common program-card pattern, built as
- * a placeholder. It is not a screenshot of any shipped screen.
+ * a placeholder. It is not a screenshot of any shipped screen. It is a
+ * picture of a pattern, so its buttons are drawn, not focusable: a keyboard
+ * user should not land on three controls that do nothing.
  */
 function BeforePlaceholder() {
   const filled =
-    'inline-flex h-control-sm items-center rounded-none border-0 bg-accent px-snug text-xs font-bold uppercase tracking-wide text-on-accent';
+    'inline-flex h-control-sm items-center rounded-none bg-accent px-snug text-xs font-bold uppercase tracking-wide text-on-accent';
   return (
     <div className="flex max-w-dialog-sm flex-col gap-nudge border-2 border-line-strong bg-surface-raised p-tight font-sans">
       <p className="m-none text-xs font-bold uppercase tracking-wide">Environmental Engineering</p>
@@ -16,15 +18,9 @@ function BeforePlaceholder() {
       <p className="m-none text-xs font-bold uppercase tracking-wide">Match score: 87%</p>
       <p className="m-none text-xs font-bold uppercase tracking-wide">Status: see details</p>
       <div className="flex flex-wrap gap-nudge pt-nudge">
-        <button type="button" className={filled}>
-          Submit
-        </button>
-        <button type="button" className={filled}>
-          Save
-        </button>
-        <button type="button" className={filled}>
-          Share
-        </button>
+        <span className={filled}>Submit</span>
+        <span className={filled}>Save</span>
+        <span className={filled}>Share</span>
       </div>
     </div>
   );
@@ -53,10 +49,15 @@ export function BeforeAfter() {
             a placeholder; it is not a screenshot of a shipped screen.
           </p>
         </div>
+        {/* Each example sits straight under its heading, so the pair lines up
+            side by side on wide screens; the notes follow as the caption. */}
         <div className="grid items-start gap-block lg:grid-cols-2">
           <figure className="m-none flex flex-col gap-loose">
-            <figcaption className="flex flex-col gap-snug">
+            <div className="flex flex-col gap-snug">
               <h2 className="m-none text-lg">Before</h2>
+              <BeforePlaceholder />
+            </div>
+            <figcaption>
               <Notes
                 items={[
                   'A score with no source. 87% of what, and says who?',
@@ -65,11 +66,15 @@ export function BeforeAfter() {
                 ]}
               />
             </figcaption>
-            <BeforePlaceholder />
           </figure>
           <figure className="m-none flex flex-col gap-loose">
-            <figcaption className="flex flex-col gap-snug">
+            <div className="flex flex-col gap-snug">
               <h2 className="m-none text-lg">After</h2>
+              <ul className="m-none flex max-w-dialog-sm list-none flex-col p-none">
+                <ProgramCard program={program} />
+              </ul>
+            </div>
+            <figcaption>
               <Notes
                 items={[
                   'The verdict comes first, in words: one gap to close, and which course closes it.',
@@ -78,9 +83,6 @@ export function BeforeAfter() {
                 ]}
               />
             </figcaption>
-            <ul className="m-none flex max-w-dialog-sm list-none flex-col p-none">
-              <ProgramCard program={program} />
-            </ul>
           </figure>
         </div>
       </main>

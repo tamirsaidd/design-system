@@ -53,9 +53,12 @@ export function EligibilityResult({ programId = 'environmental-engineering' }: E
 
       <div className="flex max-w-reading flex-col gap-tight">
         <h1 className="m-none text-2xl sm:text-3xl">{program.name}</h1>
+        {/* On phones the deadline takes its own line rather than leaving a
+            separator dangling at the end of the first. */}
         <p className="m-none text-md text-fg-secondary">
-          {program.institution} · {program.years} years ·{' '}
-          <span className="whitespace-nowrap">Apply by {formatDate(program.deadline)}</span>
+          {program.institution} · {program.years} years
+          <span className="hidden sm:inline"> · </span>
+          <span className="block whitespace-nowrap sm:inline">Apply by {formatDate(program.deadline)}</span>
         </p>
       </div>
 
