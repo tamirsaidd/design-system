@@ -18,8 +18,9 @@ Public portfolio case study: a token-first React component library with Storyboo
 - Chapter 2, then chapter 3, then the case-study write-up and the Youthcentrik outline.
 
 <!-- GATE-DEBT:BEGIN -->
-## GATE DEBT — 9 file(s) shipped past the gate
+## GATE DEBT — 22 file(s) shipped past the gate
 First recorded 2026-10-05, still accruing (latest 2026-10-06).
-- **9 UI file(s) never looked at visually**: src/tokens/tailwind.css, src/tokens/tokens.css, src/components/Input/Input.tsx, src/components/Select/Select.tsx, src/components/Textarea/Textarea.tsx, src/components/Button/Button.tsx, +3 more. Clear with the **design-gate** skill.
+- **16 UI file(s) never looked at visually**: src/tokens/tailwind.css, src/tokens/tokens.css, src/components/Input/Input.tsx, src/components/Select/Select.tsx, src/components/Textarea/Textarea.tsx, src/chapters/education-platform/ChapterFrame.tsx, +10 more. Clear with the **design-gate** skill.
+- **6 code file(s) with no verification run**: src/components/FormField/controlStyles.ts, src/chapters/education-platform/links.ts, .storybook/main.ts, scripts/brand-assets.mjs, eslint.config.js, .storybook/manager.ts. Clear with the **verify-work** skill.
 Each file disappears from this list when a receipt covers it; the block goes when the list is empty.
 <!-- GATE-DEBT:END -->
